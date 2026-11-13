@@ -30,10 +30,11 @@ public class Main {
         try (Connection con = ConexaoBD.getConnection()) {
             System.out.println("Conexão realizada com sucesso!");
             Map<Integer, Usuario> usuarios = lerUsuarios(con);
+            List<Usuario> lista = new ArrayList<>(usuarios.values());
             List<Consulta> consultas = lerConsultas(con, usuarios);
 
             System.out.println("\n--- Usuários ---");
-            for (Usuario u : usuarios.values()) {
+            for (Usuario u : lista) {
                 System.out.println(u.getPerfil() + ": " + u);
             }
             System.out.println("\n--- Consultas ---");
